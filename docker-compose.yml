@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app-service:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      REDIS_HOST: redis
+    networks:
+      - my-network
+
+  redis-service:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - my-network
+
+networks:
+  my-network:
